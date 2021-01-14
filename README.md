@@ -10,3 +10,11 @@ the record of Design Pattern Learning
 # Decorator
 
 ![decorator diagram](img/decorator_diagram.png)
+
+# Factory
+
+## Factory Method
+
+![factory method](img/factory_method.png)
+
+## Abstract Factory
