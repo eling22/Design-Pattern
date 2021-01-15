@@ -18,3 +18,5 @@ the record of Design Pattern Learning
 ![factory method](img/factory_method.png)
 
 ## Abstract Factory
+
+![abstract factory](img/abstract_factory.png)
