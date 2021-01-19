@@ -29,7 +29,7 @@ namespace Ingredient {
     Sauce -down[hidden]-> Cheese
 }
 
-namespace NYPizza {
+namespace ChicagoPizza {
     class ThickCrustDough
     class PlumTomatoSauce 
     class MozzarellaCheese
@@ -37,7 +37,7 @@ namespace NYPizza {
     PlumTomatoSauce -down[hidden]-> MozzarellaCheese
 }
 
-namespace ChicagoPizza {
+namespace NYPizza {
     class ThinCrustDough
     class MarinaraSauce 
     class ReggianoCheese
@@ -46,14 +46,14 @@ namespace ChicagoPizza {
 }
 
 
-Ingredient.Dough <|-- NYPizza.ThickCrustDough
-Ingredient.Dough <|-- ChicagoPizza.ThinCrustDough
+Ingredient.Dough <|-- ChicagoPizza.ThickCrustDough
+Ingredient.Dough <|-- NYPizza.ThinCrustDough
 
-Ingredient.Sauce <|-- NYPizza.PlumTomatoSauce
-Ingredient.Sauce <|-- ChicagoPizza.MarinaraSauce
+Ingredient.Sauce <|-- ChicagoPizza.PlumTomatoSauce
+Ingredient.Sauce <|-- NYPizza.MarinaraSauce
 
-Ingredient.Cheese <|-- NYPizza.MozzarellaCheese
-Ingredient.Cheese <|-- ChicagoPizza.ReggianoCheese
+Ingredient.Cheese <|-- ChicagoPizza.MozzarellaCheese
+Ingredient.Cheese <|-- NYPizza.ReggianoCheese
 
 NYPizzaIngredientFactory ---> NYPizza
 ChicagoPizzaIngredientFactory ---> ChicagoPizza
