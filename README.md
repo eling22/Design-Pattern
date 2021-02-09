@@ -31,3 +31,15 @@ Create a global access class for Setting or thread managing ... etc.
 It uses a static variable, a private constructor and a public static function - `getInstance()` to make sure that only one instance of class exists.
 
 ![singleton](img/singleton_diagram.png)
+
+# Command
+
+## Target
+
+Decouple the object request the command and perform the command.
+
+## Method
+
+It use a command interface with execute action, and through invoker to active the command behavior. 
+
+![command](img/command_diagram.png)
