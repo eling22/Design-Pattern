@@ -1,7 +1,3 @@
-
-# TODO : macro
-
-
 from remote_control import RemoteControl
 from package.light import Light, LightOffCommand, LightOnCommand
 from package.ceiling_fan import CeilingFan, CeilingFanHighCommand, CeilingFanMediumCommand, CeilingFanOffCommand
