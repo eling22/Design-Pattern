@@ -12,7 +12,7 @@ typedef struct _RemoteControl
 {
     Command *on_commands[SOLT_NUM];
     Command *off_commands[SOLT_NUM];
-    Command undo_command_stack[UNDO_SIZE];
+    Command *undo_command_stack[UNDO_SIZE];
     int undo_idx;
     int undo_len;
     void (*set_command)(struct _RemoteControl *, int solt, Command *on_command, Command *off_command);

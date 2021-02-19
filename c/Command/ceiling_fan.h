@@ -9,8 +9,24 @@ enum _Speed
     SPEED_MEDIUM,
     SPEED_LOW,
     SPEED_OFF,
+    SPEED_NO_CHANGE,
 };
 typedef enum _Speed Speed;
+
+#define MAX_PRE_SPEED 5
+
+typedef struct _SpeedStack
+{
+    Speed pre_speed[MAX_PRE_SPEED];
+    int pre_speed_idx;
+    int pre_speed_len;
+    void (*push)(struct _SpeedStack *self, Speed speed);
+    Speed (*pop)(struct _SpeedStack *self);
+} SpeedStack;
+
+void SpeedStackNew(SpeedStack *self);
+void SpeedStack_push(SpeedStack *self, Speed speed);
+Speed SpeedStack_pop(SpeedStack *self);
 
 typedef struct _CeilingFan
 {
@@ -28,7 +44,7 @@ typedef struct _CeilingFanHighCommand
 {
     Command(struct _CeilingFanHighCommand);
     CeilingFan *ceiling_fan;
-    Speed pre_speed;
+    SpeedStack pre_speed_stack;
 } CeilingFanHighCommand;
 
 void CeilingFanHighCommandNew(CeilingFanHighCommand *self, CeilingFan *ceiling_fan);
@@ -39,7 +55,7 @@ typedef struct _CeilingFanMediumCommand
 {
     Command(struct _CeilingFanMediumCommand);
     CeilingFan *ceiling_fan;
-    Speed pre_speed;
+    SpeedStack pre_speed_stack;
 } CeilingFanMediumCommand;
 
 void CeilingFanMediumCommandNew(CeilingFanMediumCommand *self, CeilingFan *ceiling_fan);
@@ -50,7 +66,7 @@ typedef struct _CeilingFanOffCommand
 {
     Command(struct _CeilingFanOffCommand);
     CeilingFan *ceiling_fan;
-    Speed pre_speed;
+    SpeedStack pre_speed_stack;
 } CeilingFanOffCommand;
 
 void CeilingFanOffCommandNew(CeilingFanOffCommand *self, CeilingFan *ceiling_fan);

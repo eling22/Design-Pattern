@@ -36,5 +36,5 @@ class RemoteControl:
     def __str__(self) -> str:
         string = "\n----- Remote Control -----\n"
         for i in range(self.solt_num):
-            string += f"[solt {i}] {self.on_commands[i].__class__.__name__}\t{self.off_commands[i].__class__.__name__}\n"
+            string += f"[solt {i}] {self.on_commands[i].__class__.__name__:<{25}}\t{self.off_commands[i].__class__.__name__}\n"
         return string
