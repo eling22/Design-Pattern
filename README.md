@@ -40,6 +40,30 @@ Decouple the object request the command and perform the command.
 
 ## Method
 
-It use a command interface with execute action, and through invoker to active the command behavior. 
+It uses a command interface with execute action, and through invoker to active the command behavior. 
 
 ![command](img/command_diagram.png)
+
+# Adapter
+
+## Target
+
+Make interface convert to another interface.
+
+## Method
+
+It uses a adapter class to turn the original interface to the new one.
+
+![adapter](img/adapter_diagram.png)
+
+# Facade
+
+## Target
+
+Don't provide unnecessary information for client to operate and make client code as simple as possible.
+
+## Method
+
+It uses a facade interface to restructure a set of complex interfaces. It makes the facade interface only provide necessary operate functions for clients.
+
+![facade](img/facade_diagram.png)
