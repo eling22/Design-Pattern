@@ -20,7 +20,7 @@ class WildTurkey(Turkey):
         print("Gobble gobble")
 
     def fly(self):
-        print("I'm flying a short distsnce")
+        print("I'm flying a short distance")
 
 
 class TurkeyAdapter(Duck):

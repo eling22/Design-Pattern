@@ -1,2 +1,4 @@
 __pycache__
 *.exe
+create_h_file
+c/makefile
