@@ -3,7 +3,7 @@
 #include "light.h"
 #include "ceiling_fan.h"
 #include "macro_command.h"
-void main()
+int main()
 {
     RemoteControl remote_control;
     RemoteControlNew(&remote_control);
@@ -57,4 +57,6 @@ void main()
     remote_control.undo_button_was_pushed(&remote_control);
     remote_control.undo_button_was_pushed(&remote_control);
     remote_control.undo_button_was_pushed(&remote_control);
+
+    return 0;
 }
