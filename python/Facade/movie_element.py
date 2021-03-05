@@ -27,7 +27,7 @@ class DvdPlayer:
         print(self.name, f'stopped "{self.movie}"')
 
 
-class Projecter:
+class Projector:
     def __init__(self) -> None:
         self.name = "Top-O-Line Projector"
 
@@ -40,7 +40,7 @@ class Projecter:
 
 class TheaterLights:
     def __init__(self) -> None:
-        self.name = "Thether Ceiling Lights"
+        self.name = "Theater Ceiling Lights"
 
     def dim(self, num: int):
         print(self.name, f"dimming to {num}%")
@@ -51,7 +51,7 @@ class TheaterLights:
 
 class Screen:
     def __init__(self) -> None:
-        self.name = "Thether Screen"
+        self.name = "Theater Screen"
 
     def up(self):
         print(self.name, "going up")
@@ -62,7 +62,7 @@ class Screen:
 
 class PopcornPopper:
     def __init__(self) -> None:
-        self.name = "Popcron Popper"
+        self.name = "Popcorn Popper"
 
     def on(self):
         print(self.name, "on")

@@ -1,8 +1,23 @@
-from movie_element import Amplifier, DvdPlayer, PopcornPopper, Projecter, Screen, TheaterLights
+from movie_element import (
+    Amplifier,
+    DvdPlayer,
+    PopcornPopper,
+    Projector,
+    Screen,
+    TheaterLights,
+)
 
 
 class HomeTheterFacade:
-    def __init__(self, amp: Amplifier, dvd: DvdPlayer, projector: Projecter, screen: Screen, lights: TheaterLights, popper: PopcornPopper) -> None:
+    def __init__(
+        self,
+        amp: Amplifier,
+        dvd: DvdPlayer,
+        projector: Projector,
+        screen: Screen,
+        lights: TheaterLights,
+        popper: PopcornPopper,
+    ) -> None:
         self.amp = amp
         self.dvd = dvd
         self.projector = projector
