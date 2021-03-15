@@ -9,6 +9,7 @@ the record of Design Pattern Learning
   - [Command](#command)
   - [Adapter](#adapter)
   - [Facade](#facade)
+  - [Template method](#template-method)
 
 ## Stategy
 
@@ -76,3 +77,15 @@ Don't provide unnecessary information for client to operate and make client code
 It uses a facade interface to restructure a set of complex interfaces. It makes the facade interface only provide necessary operate functions for clients.
 
 ![facade](img/facade_diagram.png)
+
+## Template method
+
+### Target
+
+Decouple low-level & high-level components. make high-level decide algorithms and low-level decide the detail of different class.
+
+### Method
+
+It use an abstract class with functions to build algorithms. When concrete class inherits the abstract class, it can overwrite some of these classes to provide flexibility for different classes.
+
+![template_method](img/template_method.png)
