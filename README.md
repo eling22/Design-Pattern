@@ -10,6 +10,7 @@ the record of Design Pattern Learning
   - [Adapter](#adapter)
   - [Facade](#facade)
   - [Template method](#template-method)
+  - [Iterator](#iterator)
 
 ## Stategy
 
@@ -89,3 +90,15 @@ Decouple low-level & high-level components. make high-level decide algorithms an
 It use an abstract class with functions to build algorithms. When concrete class inherits the abstract class, it can overwrite some of these classes to provide flexibility for different classes.
 
 ![template_method](img/template_method.png)
+
+## Iterator
+
+### Target
+
+Through a common interface for traversing the data in any aggregate data structure (ex. array, vector, link list, hash map, etc.)
+
+### Method
+
+It use a interface called Iterator with function - hasNext() & next() to implement traverse feature. Make the aggregate to implement the Iterator interface by themselves. Thus, every aggregate supporting Iterator have the traverse feature.
+
+![iterator](img/iterator_diagram.png)
