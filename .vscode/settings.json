@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.txt": "rust",
+        "type_traits": "cpp"
+    }
+}
