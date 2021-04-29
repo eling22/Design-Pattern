@@ -11,6 +11,7 @@ the record of Design Pattern Learning
   - [Facade](#facade)
   - [Template method](#template-method)
   - [Iterator](#iterator)
+  - [Composite](#composite)
 
 ## Stategy
 
@@ -102,3 +103,13 @@ Through a common interface for traversing the data in any aggregate data structu
 It use a interface called Iterator with function - hasNext() & next() to implement traverse feature. Make the aggregate to implement the Iterator interface by themselves. Thus, every aggregate supporting Iterator have the traverse feature.
 
 ![iterator](img/iterator_diagram.png)
+
+## Composite
+
+### Target
+Make clients treat individual objects and compositions of objects uniformly.
+
+### Method
+It puts individual objects and compositions of objects into a tree structure, so that it can handle both in same structure.
+
+![Composite](img/composite_diagram.png)
