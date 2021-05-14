@@ -12,6 +12,7 @@ the record of Design Pattern Learning
   - [Template method](#template-method)
   - [Iterator](#iterator)
   - [Composite](#composite)
+  - [State](#state)
 
 ## Stategy
 
@@ -113,3 +114,13 @@ Make clients treat individual objects and compositions of objects uniformly.
 It puts individual objects and compositions of objects into a tree structure, so that it can handle both in same structure.
 
 ![Composite](img/composite_diagram.png)
+
+## State
+
+### Target
+The implement of finite-state machines.
+
+### Method
+It uses a point of current state. Through changing the current state to do different behavior in same function. 
+
+![State](img/state_diagram.png)
