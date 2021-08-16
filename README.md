@@ -13,6 +13,7 @@ the record of Design Pattern Learning
   - [Iterator](#iterator)
   - [Composite](#composite)
   - [State](#state)
+  - [MVC (Model View Controller)](#mvc-model-view-controller)
 
 ## Stategy
 
@@ -96,7 +97,6 @@ It use an abstract class with functions to build algorithms. When concrete class
 ## Iterator
 
 ### Target
-
 Through a common interface for traversing the data in any aggregate data structure (ex. array, vector, link list, hash map, etc.)
 
 ### Method
@@ -124,3 +124,13 @@ The implement of finite-state machines.
 It uses a point of current state. Through changing the current state to do different behavior in same function. 
 
 ![State](img/state_diagram.png)
+
+## MVC (Model View Controller)
+
+### Target
+Help to structure the program for user interface.
+
+### Method
+It is composed of Observer, Strategy, and Composite patterns. The Model uses the Observer pattern for the view. Through the Observer pattern, the view can receive the notice from the model when a value changed. The Controller uses the Strategy pattern for the view. Through the Observer pattern, the view can choose other controllers for implementing the different behavior. The view uses the composite pattern to combine and operate components in the user interface. 
+
+![MVC](img/mvc.png)
