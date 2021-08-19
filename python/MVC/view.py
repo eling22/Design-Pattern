@@ -1,11 +1,16 @@
+from interface.beat_model_interface import BeatModelInterface
+from interface.observer import BPMObserver, BeatObserver
 import tkinter as tk
-from tkinter import ttk
+from tkinter import StringVar, ttk
 import time
 
 
-class View:
-    def __init__(self) -> None:
-        pass
+class View(BeatObserver, BPMObserver):
+    def __init__(self, model: BeatModelInterface) -> None:
+        self.model = model
+        self.l_bpm_num: StringVar
+        self.model.register_beat_observer(self)
+        self.model.register_bpm_observer(self)
 
     def create_view(self):
         init_size = 250
@@ -42,8 +47,10 @@ class View:
         self.pulsing_bar = ttk.Progressbar(view_frame, orient="horizontal", mode="determinate", length=200)
         self.pulsing_bar.grid(column=0, row=0, columnspan=2, padx=10, pady=20)
 
-        self.l_bpm_num = tk.Label(view_frame, text="Current BPM: 0", font=("Helvetica", 16))
-        self.l_bpm_num.grid(column=0, row=1, columnspan=2, padx=10, pady=10)
+        self.l_bpm_num = tk.StringVar()
+        self.l_bpm_num.set("Current BPM: 0")
+        tk.Label(view_frame, textvariable=self.l_bpm_num, font=("Helvetica", 16))\
+            .grid(column=0, row=1, columnspan=2, padx=10, pady=10)
         # fmt: on
 
     def create_bpm_frame_obj(self, init_size):
@@ -83,3 +90,13 @@ class View:
         filewin = tk.Toplevel(self.window)
         button = tk.Button(filewin, text="Do nothing button")
         button.pack()
+
+    def update_beat(self) -> None:
+        bpm = self.model.get_bpm()
+        if bpm == 0:
+            self.l_bpm_num.set("offline")
+        else:
+            self.l_bpm_num.set(f"Current BPM: {bpm}")
+
+    def update_bpm(self) -> None:
+        raise NotImplementedError

@@ -1,8 +1,8 @@
-from abc import ABCMeta, abstractmethod
-from python.MVC.interface.observer import BPMObserver, BeatObserver
+from abc import ABC, abstractmethod
+from interface.observer import BPMObserver, BeatObserver
 
 
-class BeatModelInterface(ABCMeta):
+class BeatModelInterface(ABC):
     @abstractmethod
     def initialize(self) -> None:
         raise NotImplementedError

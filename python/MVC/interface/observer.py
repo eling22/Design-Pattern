@@ -1,13 +1,13 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 
-class BeatObserver(ABCMeta):
+class BeatObserver(ABC):
     @abstractmethod
     def update_beat(self) -> None:
         raise NotImplementedError
 
 
-class BPMObserver(ABCMeta):
+class BPMObserver(ABC):
     @abstractmethod
     def update_bpm(self) -> None:
         raise NotImplementedError
