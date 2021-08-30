@@ -3,11 +3,16 @@ from interface.observer import BPMObserver, BeatObserver
 import tkinter as tk
 from tkinter import StringVar, ttk
 import time
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from controller import BeatController
 
 
 class View(BeatObserver, BPMObserver):
-    def __init__(self, model: BeatModelInterface) -> None:
+    def __init__(self, controller: "BeatController", model: BeatModelInterface) -> None:
         self.model = model
+        self.controller = controller
         self.l_bpm_num: StringVar
         self.model.register_beat_observer(self)
         self.model.register_bpm_observer(self)
@@ -32,11 +37,14 @@ class View(BeatObserver, BPMObserver):
     def create_menu(self):
         menubar = tk.Menu(self.window)
         control_menu = tk.Menu(menubar, tearoff=0)
-        control_menu.add_command(label="Start", command=self.do_nothing)
+        control_menu.add_command(label="Start", command=self.controller.start)
         control_menu.add_command(label="Stop", command=self.do_nothing)
         control_menu.add_command(label="Quit", command=self.do_nothing)
         menubar.add_cascade(label="DJ Control", menu=control_menu)
         self.window.config(menu=menubar)
+
+    def disable_start_menu():
+        pass
 
     def create_view_frame_obj(self, init_size):
         align_mode = "nswe"
@@ -100,3 +108,8 @@ class View(BeatObserver, BPMObserver):
 
     def update_bpm(self) -> None:
         raise NotImplementedError
+
+
+class Menu:
+    def __init__(self, menu_bar: tk.Menu) -> None:
+        pass
