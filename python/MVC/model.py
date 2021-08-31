@@ -19,8 +19,9 @@ class BeatModel(BeatModelInterface):
         print("beat stop")
 
     def set_bpm(self, bpm: int):
-        self.bpm = bpm
-        self.notify_bpm_observers()
+        if bpm >= 0 and bpm <= 100:
+            self.bpm = bpm
+            self.notify_bpm_observers()
 
     def get_bpm(self) -> int:
         return self.bpm

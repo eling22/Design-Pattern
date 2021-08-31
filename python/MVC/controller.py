@@ -25,11 +25,14 @@ class BeatController(ControllerInterface):
         self.view.disable_stop_menu()
         self.view.enable_start_menu()
 
-    def increase_bmp(self) -> None:
-        pass
+    def increase_bpm(self) -> None:
+        bpm = self.model.get_bpm()
+        self.model.set_bpm(bpm + 1)
 
-    def decrease_bmp(self) -> None:
-        pass
+    def decrease_bpm(self) -> None:
+        bpm = self.model.get_bpm()
+        self.model.set_bpm(bpm - 1)
 
-    def set_bpm(self, bpm: int):
-        pass
+    def set_bpm(self):
+        bpm = int(self.view.bmp_var.get())
+        self.model.set_bpm(bpm)

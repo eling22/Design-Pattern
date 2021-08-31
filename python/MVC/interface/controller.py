@@ -11,11 +11,11 @@ class ControllerInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def increase_bmp(self) -> None:
+    def increase_bpm(self) -> None:
         raise NotImplementedError
 
     @abstractmethod
-    def decrease_bmp(self) -> None:
+    def decrease_bpm(self) -> None:
         raise NotImplementedError
 
     @abstractmethod

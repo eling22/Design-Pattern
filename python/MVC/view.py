@@ -41,7 +41,7 @@ class View(BeatObserver, BPMObserver):
         self.control_menu = tk.Menu(self.menubar, tearoff=0)
         self.control_menu.add_command(label="Start", command=self.controller.start)
         self.control_menu.add_command(label="Stop", command=self.controller.stop)
-        self.control_menu.add_command(label="Quit", command=self.do_nothing)
+        self.control_menu.add_command(label="Quit", command=self.window.quit)
         self.menubar.add_cascade(label="DJ Control", menu=self.control_menu)
         self.window.config(menu=self.menubar)
 
@@ -86,13 +86,13 @@ class View(BeatObserver, BPMObserver):
         self.bmp_entry = ttk.Entry(bpm_frame, textvariable=self.bmp_var)
         self.bmp_entry.grid(column=1, row=1, padx=10, pady=5, sticky=align_mode)
 
-        self.btn_set = tk.Button(bpm_frame, text="Set", command=self.btn_set_click)
+        self.btn_set = tk.Button(bpm_frame, text="Set", command=self.controller.set_bpm)
         self.btn_set.grid(column=0, row=2, columnspan=2, padx=10, pady=10, sticky=align_mode)
 
-        self.btn_dec = tk.Button(bpm_frame, text="<<", command=self.btn_set_click, width=15)
+        self.btn_dec = tk.Button(bpm_frame, text="<<", command=self.controller.decrease_bpm, width=20)
         self.btn_dec.grid(column=0, row=3, padx=10, pady=10, sticky=align_mode)
 
-        self.btn_inc = tk.Button(bpm_frame, text=">>", command=self.btn_set_click, width=15)
+        self.btn_inc = tk.Button(bpm_frame, text=">>", command=self.controller.increase_bpm, width=20)
         self.btn_inc.grid(column=1, row=3, padx=10, pady=10, sticky=align_mode)
         # fmt: on
 
@@ -111,11 +111,12 @@ class View(BeatObserver, BPMObserver):
         button.pack()
 
     def update_beat(self) -> None:
+        self.pulsing_bar["value"] = 100
+
+    def update_bpm(self) -> None:
         bpm = self.model.get_bpm()
-        if bpm == 0:
+        if bpm < 0:
             self.l_bpm_num.set("offline")
         else:
             self.l_bpm_num.set(f"Current BPM: {bpm}")
-
-    def update_bpm(self) -> None:
-        raise NotImplementedError
+        self.pulsing_bar["value"] = bpm
