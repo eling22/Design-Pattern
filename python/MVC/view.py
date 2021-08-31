@@ -1,3 +1,4 @@
+from tkinter.constants import DISABLED, NORMAL
 from interface.beat_model_interface import BeatModelInterface
 from interface.observer import BPMObserver, BeatObserver
 import tkinter as tk
@@ -32,19 +33,29 @@ class View(BeatObserver, BPMObserver):
         window.columnconfigure(1, weight=1)
         window.rowconfigure(0, weight=1)
 
-        window.mainloop()
+    def start_mainloop(self):
+        self.window.mainloop()
 
     def create_menu(self):
-        menubar = tk.Menu(self.window)
-        control_menu = tk.Menu(menubar, tearoff=0)
-        control_menu.add_command(label="Start", command=self.controller.start)
-        control_menu.add_command(label="Stop", command=self.do_nothing)
-        control_menu.add_command(label="Quit", command=self.do_nothing)
-        menubar.add_cascade(label="DJ Control", menu=control_menu)
-        self.window.config(menu=menubar)
+        self.menubar = tk.Menu(self.window)
+        self.control_menu = tk.Menu(self.menubar, tearoff=0)
+        self.control_menu.add_command(label="Start", command=self.controller.start)
+        self.control_menu.add_command(label="Stop", command=self.controller.stop)
+        self.control_menu.add_command(label="Quit", command=self.do_nothing)
+        self.menubar.add_cascade(label="DJ Control", menu=self.control_menu)
+        self.window.config(menu=self.menubar)
 
-    def disable_start_menu():
-        pass
+    def disable_start_menu(self):
+        self.control_menu.entryconfig("Start", state=DISABLED)
+
+    def enable_start_menu(self):
+        self.control_menu.entryconfig("Start", state=NORMAL)
+
+    def disable_stop_menu(self):
+        self.control_menu.entryconfig("Stop", state=DISABLED)
+
+    def enable_stop_menu(self):
+        self.control_menu.entryconfig("Stop", state=NORMAL)
 
     def create_view_frame_obj(self, init_size):
         align_mode = "nswe"
@@ -108,8 +119,3 @@ class View(BeatObserver, BPMObserver):
 
     def update_bpm(self) -> None:
         raise NotImplementedError
-
-
-class Menu:
-    def __init__(self, menu_bar: tk.Menu) -> None:
-        pass

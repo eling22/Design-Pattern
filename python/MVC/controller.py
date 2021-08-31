@@ -10,12 +10,20 @@ class BeatController(ControllerInterface):
         self.view = View(self, model)
         self.view.create_view()
 
+        self.view.disable_stop_menu()
+        self.view.enable_start_menu()
+
+        self.view.start_mainloop()
+
     def start(self) -> None:
         self.model.on()
-        # self.view
+        self.view.disable_start_menu()
+        self.view.enable_stop_menu()
 
     def stop(self) -> None:
-        pass
+        self.model.off()
+        self.view.disable_stop_menu()
+        self.view.enable_start_menu()
 
     def increase_bmp(self) -> None:
         pass
